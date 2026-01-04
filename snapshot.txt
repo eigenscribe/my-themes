@@ -1,0 +1,687 @@
+# Repository Snapshot
+
+## Repo Intent (author-provided)
+
+[No repo intent provided]
+
+## Directory Tree
+
+.gitignore
+LICENSE
+README.md
+__init__.py
+main.py
+package-lock.json
+package.json
+pyproject.toml
+repo-summary.py
+requirements.txt
+script
+  build_bundle.py
+scripts
+snapshot.txt
+static
+  theme
+    css
+    images
+    js
+templates
+  index.html
+
+## Files
+
+
+
+=== README.md ===
+
+# my-themes
+A repository dedicated to my personalized themes for webpages and apps.
+
+## 🥧 Run from terminal
+### Setup
+```bash
+cd ~/Desktop/Scriber-Labs/my-themes
+git pull origin main
+
+#python3 -m venv .venv
+#pip install -r requirements.txt
+source .venv/bin/activate
+```
+
+### Build stylesheet
+```bash
+python scripts/build_bundle.py
+```
+
+### Run
+```bash
+python main.py
+```
+
+
+
+=== __init__.py ===
+
+
+
+=== main.py ===
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
+
+=== package-lock.json ===
+
+{
+  "name": "my-themes",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "my-themes",
+      "version": "1.0.0",
+      "license": "ISC",
+      "dependencies": {
+        "ansi-colors": "^4.1.3",
+        "anymatch": "^3.1.3",
+        "binary-extensions": "^2.3.0",
+        "braces": "^3.0.3",
+        "chokidar": "^3.6.0",
+        "clap": "^3.1.1",
+        "css-tree": "^2.2.1",
+        "fill-range": "^7.1.1",
+        "glob-parent": "^5.1.2",
+        "is-binary-path": "^2.1.0",
+        "is-extglob": "^2.1.1",
+        "is-glob": "^4.0.3",
+        "is-number": "^7.0.0",
+        "mdn-data": "^2.0.28",
+        "normalize-path": "^3.0.0",
+        "picomatch": "^2.3.1",
+        "readdirp": "^3.6.0",
+        "source-map-js": "^1.2.1",
+        "to-regex-range": "^5.0.1"
+      },
+      "devDependencies": {
+        "csso": "^5.0.5",
+        "csso-cli": "^4.0.2",
+        "prettier": "^3.6.2"
+      }
+    },
+    "node_modules/ansi-colors": {
+      "version": "4.1.3",
+      "resolved": "https://registry.npmjs.org/ansi-colors/-/ansi-colors-4.1.3.tgz",
+      "integrity": "sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==",
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/anymatch": {
+      "version": "3.1.3",
+      "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+      "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+      "dependencies": {
+        "normalize-path": "^3.0.0",
+        "picomatch": "^2.0.4"
+      },
+      "engines": {
+        "node": ">= 8"
+      }
+    },
+    "node_modules/binary-extensions": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.3.0.tgz",
+      "integrity": "sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==",
+      "engines": {
+        "node": ">=8"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/braces": {
+      "version": "3.0.3",
+      "resolved": "https://registry.npmjs.org/braces/-/braces-3.0.3.tgz",
+      "integrity": "sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==",
+      "dependencies": {
+        "fill-range": "^7.1.1"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/chokidar": {
+      "version": "3.6.0",
+      "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+      "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+      "dependencies": {
+        "anymatch": "~3.1.2",
+        "braces": "~3.0.2",
+        "glob-parent": "~5.1.2",
+        "is-binary-path": "~2.1.0",
+        "is-glob": "~4.0.1",
+        "normalize-path": "~3.0.0",
+        "readdirp": "~3.6.0"
+      },
+      "engines": {
+        "node": ">= 8.10.0"
+      },
+      "funding": {
+        "url": "https://paulmillr.com/funding/"
+      },
+      "optionalDependencies": {
+        "fsevents": "~2.3.2"
+      }
+    },
+    "node_modules/clap": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/clap/-/clap-3.1.1.tgz",
+      "integrity": "sha512-vp42956Ax06WwaaheYEqEOgXZ3VKJxgccZ0gJL0HpyiupkIS9RVJFo5eDU1BPeQAOqz+cclndZg4DCqG1sJReQ==",
+      "dependencies": {
+        "ansi-colors": "^4.1.1"
+      },
+      "engines": {
+        "node": "^12.20.0 || ^14.13.0 || >=15.0.0",
+        "npm": ">=7.0.0"
+      }
+    },
+    "node_modules/css-tree": {
+      "version": "2.2.1",
+      "resolved": "https://registry.npmjs.org/css-tree/-/css-tree-2.2.1.tgz",
+      "integrity": "sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA==",
+      "dependencies": {
+        "mdn-data": "2.0.28",
+        "source-map-js": "^1.0.1"
+      },
+      "engines": {
+        "node": "^10 || ^12.20.0 || ^14.13.0 || >=15.0.0",
+        "npm": ">=7.0.0"
+      }
+    },
+    "node_modules/csso": {
+      "version": "5.0.5",
+      "resolved": "https://registry.npmjs.org/csso/-/csso-5.0.5.tgz",
+      "integrity": "sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "css-tree": "~2.2.0"
+      },
+      "engines": {
+        "node": "^10 || ^12.20.0 || ^14.13.0 || >=15.0.0",
+        "npm": ">=7.0.0"
+      }
+    },
+    "node_modules/csso-cli": {
+      "version": "4.0.2",
+      "resolved": "https://registry.npmjs.org/csso-cli/-/csso-cli-4.0.2.tgz",
+      "integrity": "sha512-p/VipA45w8EmS8Lv6wGtE+UdsbFlqUBGhL9FCTGKxd5dC07mtg3BbZaMzMh0X+oIl2JUGR/mPx5YzuNnTM2a3w==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "chokidar": "^3.5.3",
+        "clap": "^3.1.1",
+        "csso": "^5.0.4",
+        "source-map-js": "^1.0.2"
+      },
+      "bin": {
+        "csso": "bin/csso"
+      },
+      "engines": {
+        "node": ">=12.20.0"
+      }
+    },
+    "node_modules/fill-range": {
+      "version": "7.1.1",
+      "resolved": "https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz",
+      "integrity": "sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==",
+      "dependencies": {
+        "to-regex-range": "^5.0.1"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/fsevents": {
+      "version": "2.3.3",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+      "hasInstallScript": true,
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+      }
+    },
+    "node_modules/glob-parent": {
+      "version": "5.1.2",
+      "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz",
+      "integrity": "sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==",
+      "dependencies": {
+        "is-glob": "^4.0.1"
+      },
+      "engines": {
+        "node": ">= 6"
+      }
+    },
+    "node_modules/is-binary-path": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/is-binary-path/-/is-binary-path-2.1.0.tgz",
+      "integrity": "sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==",
+      "dependencies": {
+        "binary-extensions": "^2.0.0"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/is-extglob": {
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz",
+      "integrity": "sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/is-glob": {
+      "version": "4.0.3",
+      "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz",
+      "integrity": "sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==",
+      "dependencies": {
+        "is-extglob": "^2.1.1"
+      },
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/is-number": {
+      "version": "7.0.0",
+      "resolved": "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz",
+      "integrity": "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==",
+      "engines": {
+        "node": ">=0.12.0"
+      }
+    },
+    "node_modules/mdn-data": {
+      "version": "2.0.28",
+      "resolved": "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.28.tgz",
+      "integrity": "sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g=="
+    },
+    "node_modules/normalize-path": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz",
+      "integrity": "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/picomatch": {
+      "version": "2.3.1",
+      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+      "integrity": "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==",
+      "engines": {
+        "node": ">=8.6"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/jonschlinkert"
+      }
+    },
+    "node_modules/prettier": {
+      "version": "3.6.2",
+      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.6.2.tgz",
+      "integrity": "sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==",
+      "dev": true,
+      "license": "MIT",
+      "bin": {
+        "prettier": "bin/prettier.cjs"
+      },
+      "engines": {
+        "node": ">=14"
+      },
+      "funding": {
+        "url": "https://github.com/prettier/prettier?sponsor=1"
+      }
+    },
+    "node_modules/readdirp": {
+      "version": "3.6.0",
+      "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz",
+      "integrity": "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==",
+      "dependencies": {
+        "picomatch": "^2.2.1"
+      },
+      "engines": {
+        "node": ">=8.10.0"
+      }
+    },
+    "node_modules/source-map-js": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/to-regex-range": {
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz",
+      "integrity": "sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==",
+      "dependencies": {
+        "is-number": "^7.0.0"
+      },
+      "engines": {
+        "node": ">=8.0"
+      }
+    }
+  }
+}
+
+
+=== package.json ===
+
+{
+  "devDependencies": {
+    "csso": "^5.0.5",
+    "csso-cli": "^4.0.2",
+    "prettier": "^3.6.2"
+  },
+  "name": "my-themes",
+  "version": "1.0.0",
+  "description": "A repository dedicated to my personalized themes for webpages and apps.",
+  "main": "index.js",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "anymatch": "^3.1.3",
+    "binary-extensions": "^2.3.0",
+    "braces": "^3.0.3",
+    "chokidar": "^3.6.0",
+    "clap": "^3.1.1",
+    "css-tree": "^2.2.1",
+    "fill-range": "^7.1.1",
+    "glob-parent": "^5.1.2",
+    "is-binary-path": "^2.1.0",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "mdn-data": "^2.0.28",
+    "normalize-path": "^3.0.0",
+    "picomatch": "^2.3.1",
+    "readdirp": "^3.6.0",
+    "source-map-js": "^1.2.1",
+    "to-regex-range": "^5.0.1"
+  },
+  "scripts": {
+    "build": "python3 scripts/build_bundle.py",
+    "minify": "npx csso --output build/bundle.min.css build/bundle.css",
+    "pretty": "npx csso --output build/bundle.pretty.css --format pretty build/bundle.min.css",
+    "all": "npm run build && npm run minify && npm run pretty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eigenscribe/my-themes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eigenscribe/my-themes/issues"
+  },
+  "homepage": "https://github.com/eigenscribe/my-themes#readme"
+}
+
+
+=== pyproject.toml ===
+
+# optional - for pip packaging
+
+=== repo-summary.py ===
+
+#!/usr/bin/env python3
+"""
+repo-to-txt.py
+Create a clean, LLM-friendly text snapshot of a repository:
+- Directory tree (depth-limited)
+- Source file contents
+- Optional repo intent
+- Notebook summaries instead of raw JSON
+Run from repo root:
+    python repo-to-txt.py
+"""
+
+from pathlib import Path
+
+# =====================
+# Configuration
+# =====================
+
+OUTPUT_FILE = "snapshot.txt"
+MAX_FILE_SIZE = 200_000  # bytes
+TREE_DEPTH = 3
+
+INCLUDE_EXTS = {
+    ".md", ".py", ".txt", ".yml", ".yaml", ".json", ".toml"
+}
+
+EXCLUDE_DIRS = {
+    ".git",
+    "__pycache__",
+    ".venv",
+    "node_modules",
+    ".ipynb_checkpoints",
+    ".egg-info",
+    "build",
+    "dist",
+}
+
+# Explicitly exclude generated snapshots / prompts
+EXCLUDE_FILES = {
+    "snapshot.txt",
+    "prompt.txt",
+    "repo_snapshot.txt",
+}
+
+REPO_INTENT_FILE = "REPO_INTENT.txt"
+
+NOTEBOOK_SUMMARIES = {
+    # "notebooks/demo.ipynb": "Notebook demonstrating training loop and visualization."
+}
+
+# =====================
+# Helpers
+# =====================
+
+def is_excluded(path: Path) -> bool:
+    return any(part in EXCLUDE_DIRS for part in path.parts)
+
+
+def is_text_file(path: Path) -> bool:
+    return (
+        path.is_file()
+        and path.suffix in INCLUDE_EXTS
+        and path.stat().st_size < MAX_FILE_SIZE
+    )
+
+
+def load_repo_intent() -> str:
+    path = Path(REPO_INTENT_FILE)
+    if path.exists():
+        return path.read_text(encoding="utf-8").strip()
+    return ""
+
+
+def print_tree(root: Path, depth: int) -> str:
+    lines = []
+    for path in sorted(root.rglob("*")):
+        if is_excluded(path):
+            continue
+        rel = path.relative_to(root)
+        if len(rel.parts) <= depth:
+            indent = "  " * (len(rel.parts) - 1)
+            lines.append(f"{indent}{path.name}")
+    return "\n".join(lines)
+
+
+def write_section(out, title: str):
+    out.write(f"## {title}\n\n")
+
+
+# =====================
+# Main
+# =====================
+
+def main():
+    repo = Path(".").resolve()
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as out:
+        out.write("# Repository Snapshot\n\n")
+
+        write_section(out, "Repo Intent (author-provided)")
+        intent = load_repo_intent()
+        out.write((intent if intent else "[No repo intent provided]") + "\n\n")
+
+        write_section(out, "Directory Tree")
+        out.write(print_tree(repo, TREE_DEPTH) + "\n\n")
+
+        write_section(out, "Files")
+
+        for file in sorted(repo.rglob("*")):
+            if is_excluded(file):
+                continue
+            if file.name in EXCLUDE_FILES:
+                continue
+
+            rel = file.relative_to(repo)
+
+            # Notebook handling
+            if file.suffix == ".ipynb":
+                summary = NOTEBOOK_SUMMARIES.get(
+                    str(rel),
+                    "Jupyter notebook (content omitted; JSON format)."
+                )
+                out.write(f"\n\n=== {rel} (summary) ===\n\n{summary}\n")
+                continue
+
+            # Text files
+            if is_text_file(file):
+                out.write(f"\n\n=== {rel} ===\n\n")
+                try:
+                    out.write(file.read_text(encoding="utf-8"))
+                except UnicodeDecodeError:
+                    out.write("[Skipped: encoding error]")
+
+    print(f"Saved snapshot to {OUTPUT_FILE}")
+
+
+if __name__ == "__main__":
+    main()
+
+=== requirements.txt ===
+
+blinker==1.9.0
+click==8.2.1
+Flask==3.1.2
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+Werkzeug==3.1.3
+
+
+=== script/build_bundle.py ===
+
+#!/usr/bin/env python3
+"""
+Build and optionally imify the Eigenscribe theme CSS bundle.
+"""
+
+import pathlib
+import shutil
+import subprocess 
+import sys 
+
+# ----------------------------------------------------------------------
+#  Paths
+# ----------------------------------------------------------------------
+ROOT = pathlib.Path(__file__).resolve().parents[1] # repo root
+SRC_CSS = ROOT / "static" / "theme" / "css" 
+BUILD_DIR = ROOT / "static" / "build" 
+
+# ----------------------------------------------------------------------
+# 1️⃣ Clean old build
+# ----------------------------------------------------------------------
+shutil.rmtree(BUILD_DIR, ignore_errors=True)
+BUILD_DIR.mkdir(parents=True, exist_ok=True)
+
+# ----------------------------------------------------------------------
+# 2️⃣ Order of files (adjust if your filenames differ)
+# ----------------------------------------------------------------------
+ORDER = [
+    "base/variables.css",
+    "base/theme.css",
+    "base/reset.css",
+    "base/layout.css",
+
+    "components/buttons.css",
+    "components/cards.css",
+    "components/search.css",
+    "components/icons/icon-style.css",
+    "components/icons/icons.css",
+    "components/feature-box.css",  
+    "components/typography.css",
+
+    "base/responsive.css",
+    
+    "overrides/main-site.css",
+    "overrides/streamlit.css",
+]
+
+# ----------------------------------------------------------------------
+# 3️⃣ Concatenate – with defensive checks
+# ----------------------------------------------------------------------
+bundle_path = BUILD_DIR / "bundle.css"
+
+with bundle_path.open("w", encoding="utf-8") as out:
+    for name in ORDER:
+        src = SRC_CSS / name
+        if not src.is_file():
+            print(f"⚠️ Missing {src}", file=sys.stderr)
+            continue                # skip missing files, keep going
+        out.write(f"\n/* ----- {name} ----- */\n")
+        out.write(src.read_text(encoding="utf-8"))
+        out.write("\n")             # guarantee a trailing newline
+
+print(f"✅ Bundle stylesheet created: {bundle_path}")
+
+# ----------------------------------------------------------------------
+# 4️⃣ Optional minification (requires `csso` npm package)
+# ----------------------------------------------------------------------
+MINIFIED = BUILD_DIR / "bundle.min.css"
+try:
+    # 'npx' will look for a local csso-cli first, then fall back to a global one.
+    subprocess.run(
+        ["npx", "csso", str(bundle_path), "--output", str(MINIFIED)],
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    print(f"✅ Minified bundle created: {MINIFIED}")
+except subprocess.CalledProcessError as exc:
+    # csso ran but returned a non-zero exit code (syntax error in CSS)
+    print(
+        f"⚠️ Minifiaction failed (csso exit code {exc.returncocde})." 
+        f"stderr:\n{exc.stderr}",
+        file=sys.stderr,
+    )
+except FileNotFoundError:
+    # npx or csso not found at all
+    print("⚠️ npx or csso-cli not installed - run 'npm install csso-cli --save-dev'", file=sys.stderr)
+
